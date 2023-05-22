@@ -1,0 +1,6 @@
+[console_scripts]
+doc=selenium_async._scripts:doc
+format=selenium_async._scripts:format
+test=selenium_async._scripts:test
+test-integration=selenium_async._scripts:test_integration
+
