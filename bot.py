@@ -373,7 +373,7 @@ async def check_url(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
             await update.message.reply_text(text=f"{update.effective_user.name} This is a playlist, checking url",
                                             reply_to_message_id=user_try_id)
-            logs.write_log(f"{update.effective_user.name} This is a playlist", user_id)
+            logs.write_log(f"{update.effective_user.name} This is a playlist")
             logger.info(f"URL is correct, try to download it...")
             playlist_href = sp.playlist(confirmation)
             await context.bot.send_message(chat_id=update.effective_chat.id,
@@ -388,8 +388,7 @@ async def check_url(update: Update, context: ContextTypes.DEFAULT_TYPE):
                     log = logs.read_log(user_id=user_id)
                     await context.bot.send_message(chat_id=os.getenv("LOGGING_CHAT_ID"), text=log+f"\n{update.effective_user.name}, {user_id}")
                     logs.clear_log(user_id=user_id)
-                except Exception as exp:
-                    print(exp)
+                except:
                     errors_count += 1
 
             await context.bot.send_message(chat_id=update.effective_chat.id,
@@ -401,7 +400,7 @@ async def check_url(update: Update, context: ContextTypes.DEFAULT_TYPE):
         await update.message.reply_text(text=f"{update.effective_user.name} This is a single track, checking url...",
                                         reply_to_message_id=user_try_id)
         logger.info(f"URL is correct, try to download it...")
-        logs.write_log(f"{update.effective_user.name} This is a single track", user_id)
+        logs.write_log(f"{update.effective_user.name} This is a single track")
         await context.bot.send_message(chat_id=update.effective_chat.id, text=f"URL is correct, try to download it...")
         try:
             from savify.exceptions import InternetConnectionError
@@ -560,7 +559,6 @@ def download_via_scrape(music_name=None, user_id=None, number_of_cycles=100, che
     # options.add_argument("--window-size=1920,1200")
     options.experimental_options["prefs"] = chrome_prefs
     # options.add_argument('--headless=new')
-    options.add_argument("binary = ")
     driver = webdriver.Chrome(options=options)
     actions = ActionChains(driver)
     final_link = ""

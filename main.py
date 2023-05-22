@@ -163,8 +163,8 @@ def load(email, password, songs_count=275):
 # id of playlist
 def format_file_to_spotify(file_path):
     print("[+] Start")
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="client_id",
-                                                   client_secret="client_secret",
+    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="3adffed607c84e5bb5f34cbcef74154c",
+                                                   client_secret="3b291b4ff0044a02bd43e71af9c3da42",
                                                    redirect_uri="https://translate.google.com/?sl=de&tl=en&op=translate",
                                                    scope="playlist-modify-public"
                                                    ))
@@ -446,7 +446,7 @@ def spotify_download():
     s.download('https://open.spotify.com/track/7lz6NyGH5jL5qrHj1PKUbI')
 
 if __name__ == '__main__':
-    load(email="user_email", password="user_pass", songs_count=279)
+    load(email="Kraccenmoney@gmail.com", password="cqzijmbn12345", songs_count=279)
     format_file_to_spotify(file_path=r'D:\pythonProject\pythonProject\spofity_parser\music.txt')
 
     # while True:
